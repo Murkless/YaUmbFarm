@@ -1,0 +1,31 @@
+services:
+  weather:
+    build: .
+    init: true
+    user: "${WEATHER_UID:-1000}:${WEATHER_GID:-1000}"
+    environment:
+      WEATHER_CONFIG: /app/config.json
+    volumes:
+      - type: bind
+        source: ${WEATHER_CONFIG_HOST:-./config.example.json}
+        target: /app/config.json
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./.private
+        target: /app/.private
+        bind:
+          create_host_path: false
+    restart: "on-failure:3"
+    stop_grace_period: 2m
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"

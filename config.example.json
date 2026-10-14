@@ -1,0 +1,8 @@
+{
+  "pageUrl": "https://yandex.ru/pogoda/ru",
+  "checkIntervalSeconds": 600,
+  "afterReportSeconds": 600,
+  "answer": "random",
+  "sessionFile": ".private/session.json",
+  "stateFile": ".private/state.json"
+}

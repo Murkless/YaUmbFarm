@@ -1,0 +1,18 @@
+[Unit]
+Description=Weather collection HTTP client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=weatherbot
+WorkingDirectory=/opt/weather-client
+ExecStart=/usr/bin/node /opt/weather-client/src/cli.mjs run
+Restart=on-failure
+RestartSec=60
+RestartPreventExitStatus=2
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

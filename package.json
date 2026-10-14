@@ -1,0 +1,14 @@
+{
+  "name": "weather-collection-client",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "login": "node src/login.mjs",
+    "status": "node src/cli.mjs status",
+    "once": "node src/cli.mjs once",
+    "start": "node src/cli.mjs run",
+    "test": "node --test"
+  },
+  "dependencies": { "tough-cookie": "^6.0.0" }
+}
